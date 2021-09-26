@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import {useDispatch} from 'react-redux'
-import {loginSincrono} from '../actions/actionLogin'
+import {loginGoogle,  loginEmailPassword} from '../actions/actionLogin'
 import {useForm} from '../hooks/useFrom'
 
 
@@ -10,7 +10,7 @@ function Login() {
 
     const dispatch = useDispatch()
 
-    const [ values, handleInputChange, reset ] = useForm({
+    const [ values, handleInputChange ] = useForm({
         email: '',
         password: ''
     })
@@ -20,12 +20,16 @@ function Login() {
     const handleLogin=(e)=>{
 
         e.preventDefaul();
-        dispatch(loginSincrono(email, password))
+        dispatch(loginEmailPassword(email, password))
         
     }
 
+    const handleGoogle=()=>{
+        dispatch(loginGoogle())
+    }
+
     return (
-        <Form>
+        <Form onSubmit={handleLogin}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Correo</Form.Label>
                 <Form.Control
@@ -53,6 +57,7 @@ function Login() {
             <Container className="auth__social-networks">
                 <Container
                     className="google-btn"
+                    onClick={handleGoogle}
 
                 >
                     <Container className="google-icon-wrapper">

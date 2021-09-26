@@ -11,8 +11,7 @@ export const loginReducer=(state ={}, action)=> {
              name:action.payload.displayname
            }
            
-          
-       default:
+               default:
            return state;
    }
 }
