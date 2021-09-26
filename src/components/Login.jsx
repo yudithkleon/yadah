@@ -1,9 +1,28 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import {loginSincrono} from '../actions/actionLogin'
+import {useForm} from '../hooks/useFrom'
 
 
 function Login() {
+
+    const dispatch = useDispatch()
+
+    const [ values, handleInputChange, reset ] = useForm({
+        email: '',
+        password: ''
+    })
+
+    const {email, password}= values;
+
+    const handleLogin=(e)=>{
+
+        e.preventDefaul();
+        dispatch(loginSincrono(email, password))
+        
+    }
 
     return (
         <Form>
@@ -12,7 +31,10 @@ function Login() {
                 <Form.Control
                     type="email"
                     placeholder="Enter email"
-                    name="email" />
+                    name="email" 
+                    value={email}
+                    onChange={handleInputChange}/>
+                    
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -20,7 +42,9 @@ function Login() {
                 <Form.Control
                     type="password"
                     placeholder="Password"
-                    name="password" />
+                    name="password" 
+                    value={password}
+                    onChange={handleInputChange}/>
             </Form.Group>
             <Button variant="primary" type="submit">
                 Enviar
