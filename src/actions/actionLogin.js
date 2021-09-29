@@ -1,6 +1,6 @@
 import { types } from "../types/types";
 import { getAuth, signInWithPopup, signInWithEmailAndPassword } from "@firebase/auth";
-import { google } from "../firebase/firebaseComfig";
+import { google } from "../firebase/firebaseConfig";
 
 export const loginEmailPassword=(email, password)=>{
     return (dispatch)=>{
