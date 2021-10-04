@@ -5,9 +5,11 @@ export const types={
    
 }
 
-export const typesEstudiante={
+
+export const typesPortafolio={
     registro:'registro',
     listar:'listar',
     eliminar:'eliminar'
+    
     
 }

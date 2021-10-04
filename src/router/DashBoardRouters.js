@@ -5,16 +5,16 @@ import {
     Route,
     Redirect
   } from "react-router-dom";
-import { Estudiantes } from '../components/Estudiantes';
+
+import { Portafolio } from '../components/Portafolio';
 
 export const DashBoardRouters = () => {
     return (
         <div>
             <Switch>
-                <Route exact path="/estudiantes" component={Estudiantes} />
-                <Redirect  to="/estudiantes" />
-
-              
+                <Route exact path="/portafolio" component={Portafolio}/>
+                <Redirect  to="/portafolio" />
+   
             </Switch>
         </div>
     )

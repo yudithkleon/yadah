@@ -66,6 +66,7 @@ function Login() {
             </Container>
             <Link to="/registro">Registrarse</Link>
 
+           
         </Form>
 
     );

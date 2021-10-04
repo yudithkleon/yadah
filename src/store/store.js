@@ -2,7 +2,8 @@ import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { loginReducer } from "../reducers/loginReducer";
 import { registerReducer } from "../reducers/registerReducer";
-import { estudianteReducers } from "../reducers/estudianteReducers";
+import {portafolioReducers} from "../reducers/portafolioReducers";
+
 
 
 const composeEnhancers =
@@ -13,7 +14,7 @@ const composeEnhancers =
 const reducers = combineReducers ( {
   login: loginReducer,
   register: registerReducer,
-  estudiante: estudianteReducers
+  portafolio: portafolioReducers
 
 })
 
