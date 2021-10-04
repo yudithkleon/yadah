@@ -1,61 +1,84 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../actions/actionLogin";
 import { useForm } from "../hooks/useFrom";
-import {fileUpload} from "../helpers/FileUpload";
-import {PortaAsincronico, ListarAsincronico} from "../actions/actionsPortafolio";
+import { fileUpload } from "../helpers/FileUpload";
+import {
+  PortaAsincronico,
+  ListarAsincronico,
+} from "../actions/actionsPortafolio";
 import { ListarPortafolio } from "./ListarPortafolio";
-import {swal} from "sweetalert";
- 
+import { swal } from "sweetalert";
 
 
 export const Portafolio = ({ history }) => {
 
   const dispatch = useDispatch();
 
-  const  [ values, handleInputChange]= useForm ({
+  const MostrarAlert=()=>{
+    return(
+        swal({
+            icon: "success",
+            title: "En Construccion..."
+            ,
+          })
+    )
+}
+
+
+  const [values, handleInputChange] = useForm({
     nomProfesional: " ",
     email: " ",
     descripcionServicio: " ",
-    nomTecnica:"",
-    precio:"",
-    imagen:""
-   
-  })  
-  let  {nomProfesional, email,   descripcionServicio,   nomTecnica,   precio,   imagen} = values;
+    nomTecnica: "",
+    precio: "",
+    imagen: "",
+  });
+  let {
+    nomProfesional,
+    email,
+    descripcionServicio,
+    nomTecnica,
+    precio,
+    imagen,
+  } = values;
 
-  const handleRegistro = (e) =>{
-      e.preventDefault();
-      dispatch(PortaAsincronico(nomProfesional, email,   descripcionServicio,   nomTecnica,   precio,   imagen))
-  }
+  const handleRegistro = (e) => {
+    e.preventDefault();
+    dispatch(
+      PortaAsincronico(
+        nomProfesional,
+        email,
+        descripcionServicio,
+        nomTecnica,
+        precio,
+        imagen
+      )
+    );
+  };
 
-  
   const handleLogout = () => {
     dispatch(logout());
     history.replace("/login");
   };
 
   const handlePictureClick = () => {
-    document.querySelector('#fileSelector').click();
-}
-const handleFileChanged = (e) => {
-   const file = e.target.files[0];
-   fileUpload(file)
-   .then(response => {
-       imagen = response
-       
-   })
-   .catch(error => {
-       console.log(error.message);
-   })
-  
-}
+    document.querySelector("#fileSelector").click();
+  };
+  const handleFileChanged = (e) => {
+    const file = e.target.files[0];
+    fileUpload(file)
+      .then((response) => {
+        imagen = response;
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
-
-
-useEffect(() => {
-    dispatch(ListarAsincronico())
-}, [])
+  useEffect(() => {
+    dispatch(ListarAsincronico());
+  }, []);
 
 
   return (
@@ -77,13 +100,20 @@ useEffect(() => {
 
           <div className="form-group col-md-4">
             <label htmlFor="email">Email de Profesional</label>
-            <input className="form-control" type="text" name="email" id="email"
-            value={email}
-            onChange={handleInputChange}/>
+            <input
+              className="form-control"
+              type="text"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleInputChange}
+            />
           </div>
 
           <div className="form-group col-md-4">
-            <label htmlFor="descripcionServicio">Descripción de el Servicio</label>
+            <label htmlFor="descripcionServicio">
+              Descripción de el Servicio
+            </label>
             <input
               className="form-control"
               type="text"
@@ -115,45 +145,45 @@ useEffect(() => {
               id="precio"
             />
           </div>
-               
-        
+
           <br />
           <div className="form-group col-md-4">
             <input
               id="fileSelector"
               type="file"
               name="file"
-              
               onChange={handleFileChanged}
               value={imagen}
               style={{ display: "none" }}
             />
-            <button type="button" className="btn btn-success m-2"
-            onClick={handlePictureClick}
+            <button
+              type="button"
+              className="btn btn-success m-2"
+              onClick={handlePictureClick}
+   
             >
               Cargar Imagen
             </button>
           </div>
 
           <div>
-            <button className="btn btn-primary m-3">Guardar</button>
+            <button  className="btn btn-primary m-3">
+              Guardar
+            </button>
           </div>
-        
         </div>
       </form>
       <div>
-           
-           <button
-             type="button"
-             className="btn btn-primary m-3 "
-             onClick={handleLogout}
-                 >
-             Logout
-           </button>
-         </div>
-     <ListarPortafolio />
+        <button
+          type="button"
+          className="btn btn-primary m-3 "
+          onClick={handleLogout}    
+          
+        >
+          Logout
+        </button>
       </div>
-
+      <ListarPortafolio />
+    </div>
   );
 };
-

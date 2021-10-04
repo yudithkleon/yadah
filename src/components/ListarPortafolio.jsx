@@ -10,7 +10,7 @@ export const ListarPortafolio = () => {
 
   const dispatch = useDispatch();
 
-const MostrarAlert=()=>{
+const MostrarAlert1=()=>{
     return(
         swal({
             icon: "success",
@@ -18,7 +18,14 @@ const MostrarAlert=()=>{
             ,
           })
     )
+}
 
+const MostrarAlert=()=>{
+    return(
+        swal({
+            text: "Eliminando....",
+          })
+    )
 }
 
   return (
@@ -60,10 +67,17 @@ const MostrarAlert=()=>{
                   <br />
                   <h7 className="text-secondary ">Pasar el cursor sobre la imagen para ver detalles de foto </h7>
                  </td>
-                 <td><button className="btn-danger mb-4" onClick={()=>dispatch(eliminarAsincrono(porta.emailProf))} >Eliminar
+                 <td><button className="btn-danger mb-4" 
+                 onClick={()=>
+                 {MostrarAlert();
+                dispatch(eliminarAsincrono(porta.emailProf));
+                    
+                 } }>Eliminar
+             
+
                  </button>
                 <br/> <br />
-                   <button  className="btn-success" onClick={MostrarAlert}>Editar</button></td>
+                   <button  className="btn-success" onClick={MostrarAlert1}>Editar</button></td>
                 <td></td>
               </tr>
             ))
