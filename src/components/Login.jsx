@@ -18,8 +18,7 @@ function Login() {
     const {email, password}= values;
 
     const handleLogin=(e)=>{
-
-        e.preventDefaul();
+        e.preventDefault();
         dispatch(loginEmailPassword(email, password))
         
     }

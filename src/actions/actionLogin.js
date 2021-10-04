@@ -1,6 +1,27 @@
 import { types } from "../types/types";
-import { getAuth, signInWithPopup, signInWithEmailAndPassword } from "@firebase/auth";
+import { getAuth, signInWithPopup, signInWithEmailAndPassword, signOut } from "@firebase/auth";
 import { google } from "../firebase/firebaseConfig";
+
+//sINoUUT PARA QUE CIERRE LA SECCION
+export const logout = () => {
+    return(dispatch) => {
+        const auth = getAuth();
+        signOut(auth)
+        .then(resp => {
+            dispatch(logoutSincrono())
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+}
+
+export const logoutSincrono = () => {
+    return{
+        type: types.logout,
+    }
+}
+
 
 export const loginEmailPassword=(email, password)=>{
     return (dispatch)=>{
