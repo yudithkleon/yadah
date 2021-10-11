@@ -5,7 +5,6 @@ import { registerReducer } from "../reducers/registerReducer";
 import {portafolioReducers} from "../reducers/portafolioReducers";
 
 
-
 const composeEnhancers =
   (typeof window !== "undefined" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||

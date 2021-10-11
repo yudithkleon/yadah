@@ -1,0 +1,20 @@
+{
+  "venues": [
+    {
+      "description": "Centro Comercial Trebolis ",
+      "name": "YADAH",
+      "geometry": [
+          4.6391857,
+           -74.1838036
+        ]
+    },
+    {
+      "description": "Angelica Pickel",
+      "name": "Angelica",
+      "geometry": [
+          4.6375862,
+          -74.1852946
+        ]
+    }
+  ]
+}

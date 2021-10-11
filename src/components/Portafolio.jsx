@@ -9,6 +9,8 @@ import {
 } from "../actions/actionsPortafolio";
 import { ListarPortafolio } from "./ListarPortafolio";
 import { swal } from "sweetalert";
+import { NavBar } from "./NavBar";
+
 
 
 export const Portafolio = ({ history }) => {
@@ -83,7 +85,7 @@ export const Portafolio = ({ history }) => {
 
   return (
     <div>
-      <form onSubmit={handleRegistro}>
+          <form onSubmit={handleRegistro}>
         <h1>Portafolios</h1>
         <div className="form-group">
           <div className="form-group col-md-4">
