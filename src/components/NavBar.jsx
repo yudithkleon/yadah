@@ -5,12 +5,14 @@ import { useDispatch } from "react-redux";
 import { logout } from "../actions/actionLogin";
 
 
-export const NavBar = (history) => {
+export const NavBar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleLogout = () => {
     dispatch(logout());
-    history.replace("/login");
+  
+    history.push("/login");
   };
 
   return (
@@ -51,11 +53,11 @@ export const NavBar = (history) => {
                       style={{ width: "40px" }}
                       src="https://res.cloudinary.com/danimel/image/upload/v1633825804/portfolio_kajvoz.png"
                     />
-                    Portafolio
+                     Agregar Portafolio
                   </Link>
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
+                <Nav.Item>
                 <Nav.Link
                   style={{ color: "violet", fontSize: "14px", margin: "3px" }}
                   eventKey="link-2"
@@ -84,16 +86,20 @@ export const NavBar = (history) => {
                 
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link
-                  style={{ color: "violet", fontSize: "14px", margin: "3px" }}
-                  eventKey="link-5"
-                >
-                  <img
-                    style={{ width: "40px", margin: "3px" }}
-                    src="https://res.cloudinary.com/danimel/image/upload/v1633826300/cliente_zpclyw.png"
-                  />
-                  Servicio
-                </Nav.Link>
+            
+                  <Nav.Link
+                    style={{ color: "violet", fontSize: "14px", margin: "3px" }}
+                    eventKey="link-5"
+                  >
+                  <Link  style={{ color: "violet", fontSize: "14px", margin: "3px" }} to="/servicios">
+                    <img
+                      style={{ width: "40px", margin: "3px" }}
+                      src="https://res.cloudinary.com/danimel/image/upload/v1633826300/cliente_zpclyw.png"
+                    />
+                    Servicio
+                    </Link>
+                  </Nav.Link>
+               
               </Nav.Item>
             </Nav>
             <Nav>
@@ -102,7 +108,7 @@ export const NavBar = (history) => {
                   style={{ color: "violet", fontSize: "14px", margin: "3px" }}
                   eventKey="link-1"
                 >
-                  <Link to="/registro" style={{ color: "violet", margin: "3px" }}>
+                  <Link to="/perfil" style={{ color: "violet", margin: "3px" }}>
                     <img
                       style={{ width: "40px" }}
                       src="https://res.cloudinary.com/danimel/image/upload/v1633825804/perfil_na6vdw.png"

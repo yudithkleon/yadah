@@ -44,6 +44,7 @@ if (checking){
   return (
     <Router>
         <Switch>
+
           <PublicRouter 
           
           path="/login"
@@ -51,13 +52,7 @@ if (checking){
           isAuthenticated={isLoggedIn}/>
 
 
-          <PublicRouter 
-          
-          path="/registro"
-          component={Registro}
-          isAuthenticated={isLoggedIn}/>
-
-          <PrivateRoute 
+                   <PrivateRoute 
           path="/"
           component={DashBoardRouters}
           isAuthenticated={isLoggedIn}/>

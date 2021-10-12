@@ -9,7 +9,8 @@ import {
 } from "../actions/actionsPortafolio";
 import { ListarPortafolio } from "./ListarPortafolio";
 import { swal } from "sweetalert";
-import { NavBar } from "./NavBar";
+import {Container} from 'react-bootstrap';
+
 
 
 
@@ -84,108 +85,107 @@ export const Portafolio = ({ history }) => {
 
 
   return (
-    <div>
-          <form onSubmit={handleRegistro}>
-        <h1>Portafolios</h1>
-        <div className="form-group">
-          <div className="form-group col-md-4">
-            <label htmlFor="nomProfesional">Nombre de Profesional</label>
-            <input
-              className="form-control"
-              type="text"
-              name="nomProfesional"
-              value={nomProfesional}
-              onChange={handleInputChange}
-              id="nomProfesional"
-            />
-          </div>
+    <Container style={{alignContent:'center'}}>
+      <div style={{alignContent:'center'}}>
+            <form onSubmit={handleRegistro}>
+          <h1 style={{textAlign:'center'}}>Crear su Portafolio</h1>
+          <hr style={{ border: "2px solid violet" }} />
 
-          <div className="form-group col-md-4">
-            <label htmlFor="email">Email de Profesional</label>
-            <input
-              className="form-control"
-              type="text"
-              name="email"
-              id="email"
-              value={email}
-              onChange={handleInputChange}
-            />
+          <div className="form-group">
+            <div className="form-group col-md-4">
+              <label htmlFor="nomProfesional">Nombre de Profesional</label>
+              <input
+                className="form-control"
+                type="text"
+                name="nomProfesional"
+                value={nomProfesional}
+                onChange={handleInputChange}
+                id="nomProfesional"
+              />
+            </div>
+            <div className="form-group col-md-4">
+              <label htmlFor="email">Email de Profesional</label>
+              <input
+                className="form-control"
+                type="text"
+                name="email"
+                id="email"
+                value={email}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group col-md-4">
+              <label htmlFor="descripcionServicio">
+                Descripción de el Servicio
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="descripcionServicio"
+                value={descripcionServicio}
+                onChange={handleInputChange}
+                id="descripcionServicio"
+              />
+            </div>
+            <div className="form-group col-md-4">
+              <label htmlFor="nomTecnica">Nombre de la Tecnica</label>
+              <input
+                className="form-control"
+                type="text"
+                name="nomTecnica"
+                value={nomTecnica}
+                onChange={handleInputChange}
+                id="nomTecnica"
+              />
+            </div>
+            <div className="form-group col-md-4">
+              <label htmlFor="precio">Precio de este Servicio $:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="precio"
+                value={precio}
+                onChange={handleInputChange}
+                id="precio"
+              />
+            </div>
+            <br />
+            <div className="form-group col-md-4">
+              <input
+                id="fileSelector"
+                type="file"
+                name="file"
+                onChange={handleFileChanged}
+                value={imagen}
+                style={{ display: "none" }}
+              />
+              <button
+                type="button"
+                className="btn btn-success m-2"
+                onClick={handlePictureClick}
+              >
+                Cargar Imagen
+              </button>
+            </div>
+            <div>
+              <button  className="btn btn-primary m-3">
+                Guardar
+              </button>
+            </div>
           </div>
-
-          <div className="form-group col-md-4">
-            <label htmlFor="descripcionServicio">
-              Descripción de el Servicio
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="descripcionServicio"
-              value={descripcionServicio}
-              onChange={handleInputChange}
-              id="descripcionServicio"
-            />
-          </div>
-          <div className="form-group col-md-4">
-            <label htmlFor="nomTecnica">Nombre de la Tecnica</label>
-            <input
-              className="form-control"
-              type="text"
-              name="nomTecnica"
-              value={nomTecnica}
-              onChange={handleInputChange}
-              id="nomTecnica"
-            />
-          </div>
-          <div className="form-group col-md-4">
-            <label htmlFor="precio">Precio de este Servicio $:</label>
-            <input
-              className="form-control"
-              type="text"
-              name="precio"
-              value={precio}
-              onChange={handleInputChange}
-              id="precio"
-            />
-          </div>
-
-          <br />
-          <div className="form-group col-md-4">
-            <input
-              id="fileSelector"
-              type="file"
-              name="file"
-              onChange={handleFileChanged}
-              value={imagen}
-              style={{ display: "none" }}
-            />
-            <button
-              type="button"
-              className="btn btn-success m-2"
-              onClick={handlePictureClick}
-   
-            >
-              Cargar Imagen
-            </button>
-          </div>
-
-          <div>
-            <button  className="btn btn-primary m-3">
-              Guardar
-            </button>
-          </div>
+        </form>
+        <div>
+          <button
+            type="button"
+            className="btn btn-primary m-3 "
+            onClick={handleLogout}
+      
+          >
+            Logout
+          </button>
         </div>
-      </form>
-      <div>
-        <button
-          type="button"
-          className="btn btn-primary m-3 "
-          onClick={handleLogout}    
-          
-        >
-          Logout
-        </button>
+        <ListarPortafolio />
       </div>
-      <ListarPortafolio />
-    </div>
+    </Container>
   );
 };

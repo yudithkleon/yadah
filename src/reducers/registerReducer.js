@@ -12,6 +12,11 @@ export const registerReducer=(state ={}, action)=> {
            password: action.payload.password,
            name: action.payload.name
          } 
+
+         case types.perfil:
+           return{
+              students: [...action.payload]
+           }
          
        default:
            return state;

@@ -1,35 +1,19 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { eliminarAsincrono } from "../actions/actionsPortafolio";
 import ReactImageMagnify from "react-image-magnify";
-import swal from "sweetalert";
+import { AgendarCita } from "./AgendarCita";
 
-export const ListarPortafolio = () => {
-  const { portafolio } = useSelector((store) => store.portafolio);
+const LisPortafolioCliente = () => {
 
-  const dispatch = useDispatch();
+    const { portafolio } = useSelector((store) => store.portafolio);
 
-const MostrarAlert1=()=>{
-    return(
-        swal({
-            icon: "success",
-            title: "En Construccion..."
-            ,
-          })
-    )
-}
+    const dispatch = useDispatch();
+  
 
-const MostrarAlert=()=>{
-    return(
-        swal({
-            text: "Eliminando....",
-          })
-    )
-}
 
-  return (
-    <div>
+    return (
+         <div>
       <Table striped bordered hover>
         <thead></thead>
         <tbody>
@@ -37,7 +21,7 @@ const MostrarAlert=()=>{
             portafolio.map((porta, index) => (
               <tr key={index}>
                 <td>
-                  <div style={{ width: "242px", height: "300px" }}>
+                  <div style={{ width: "242px", height: "313px" }}>
                     <div>
                       <ReactImageMagnify
                         {...{
@@ -67,18 +51,23 @@ const MostrarAlert=()=>{
                   <br />
                   <h7 className="text-secondary ">Pasar el cursor sobre la imagen para ver detalles de foto </h7>
                  </td>
-                 <td><button style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }}
-                 onClick={()=>
-                 {MostrarAlert();
-                dispatch(eliminarAsincrono(porta.emailProf));
-                    
-                 } }>Eliminar
-             
-
+                 <td><button  style={{
+                  alignContent: "center",
+                  width: "150px",
+                  height: "80px",
+                  marginTop: "50px",
+                  marginLeft: "30px",
+                  background: "violet",
+                  color: "black",
+                  border: "1px solid black",
+                  borderRadius: "25px",
+                }} 
+                 onClick=
+                 {<AgendarCita/>}>Agendar Servicio
                  </button>
                 <br/> <br />
-                   <button  style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }} onClick={MostrarAlert1}>Editar</button></td>
-                
+                   </td>
+               
               </tr>
             ))
           ) : (
@@ -87,5 +76,7 @@ const MostrarAlert=()=>{
         </tbody>
       </Table>
     </div>
-  );
-};
+    )
+}
+
+export default LisPortafolioCliente
