@@ -1,28 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
-  Container,
-  Button,
-  Card,
-  Row,
-  CollapseProps,
-  Col,
-} from "react-bootstrap";
+  AgendarAsincronico,
+  ListarAsincronico,
+} from "../actions/actionAgendarCita";
+import { Container, Button, Card, Row, Col } from "react-bootstrap";
 import CapLocalizacion from "./MapaLocalizacion/CapLocalizacion";
+import { useForm } from "../hooks/useFrom";
 
 export const AgendarCita = () => {
+  const { perfil } = useSelector((store) => store.perfil);
+
+  const dispatch = useDispatch();
+
+  const [values, handleInputChange] = useForm({
+    lugar: "",
+    direc: "",
+    servicio: "",
+    observacion: "",
+    cliente: "",
+    email: "",
+    fecha: "",
+    hora: "",
+    profesional: "",
+  });
+  let {
+    lugar,
+    direc,
+    servicio,
+    observacion,
+    cliente,
+    email,
+    fecha,
+    hora,
+    profesional,
+  } = values;
+
+  const handleRegistro = (e) => {
+    e.preventDefault();
+    dispatch(
+      AgendarAsincronico(
+        lugar,
+        direc,
+        servicio,
+        observacion,
+        cliente,
+        email,
+        fecha,
+        hora,
+        profesional
+      )
+    );
+  };
+
+  useEffect(() => {
+    dispatch(ListarAsincronico);
+  }, []);
+
   return (
     <Container>
       <div className="card mt-5">
         <div className="card-body">
-          <form>
-            {/* <form onSubmit={handleSubmit}> */}
+          <form onSubmit={handleRegistro}>
             <h1 className="text-center bg-violet"> Agregar Citas</h1>
             <hr style={{ border: "4px solid violet" }} />
             <div>
-              <select className="m-3" name="OS">
+              <select className="m-3" name="OS" onChange={handleInputChange}>
                 <option value="1">Elige lugar de Servicio</option>
-                <option value="2">Yadah Agencia de Belleza</option>
-                <option value="3">Domicilio</option>
+                <option value={(lugar = "Local")}>
+                  Yadah Agencia de Belleza
+                </option>
+                <option value={(lugar = "Domicilio")}>Domicilio</option>
               </select>
 
               <input
@@ -31,8 +80,8 @@ export const AgendarCita = () => {
                 className="form-control m-2"
                 placeholder="Ingrese dirección exacta"
                 autoComplete="off"
-                // value={nombre}
-                // onChange={handleInputChange}
+                value={direc}
+                onChange={handleInputChange}
               />
             </div>
             <hr style={{ border: "2px solid violet" }} />
@@ -49,43 +98,45 @@ export const AgendarCita = () => {
                       style={{ width: "13rem", padding: "20px" }}
                       src="https://res.cloudinary.com/danimel/image/upload/v1633925373/u%C3%B1a_a3rwol.jpg"
                     />
-                    <select name="OS">
-                      <option value="1">Servicio de Uñas</option>
-                      <option value="2">Manicure Tradicional</option>
-                      <option value="3">Manicure Rusa</option>
-                      <option value="4">Esmaltado Semipermanente </option>
-                      <option value="5">
+                    <select name="OS" onChange={handleInputChange}>
+                      <option value={servicio}>Servicio de Uñas</option>
+                      <option value={servicio}>Manicure Tradicional</option>
+                      <option value={servicio}>Manicure Rusa</option>
+                      <option value={servicio}>
+                        Esmaltado Semipermanente{" "}
+                      </option>
+                      <option value={servicio}>
                         Uñas Acrilicas con Tips, esmaltado Tradicional
                       </option>
-                      <option value="6">
+                      <option value={servicio}>
                         Uñas Acrilicas, Esculpidas, esmaltado Tradicional
                       </option>
-                      <option value="7">
+                      <option value={servicio}>
                         Uñas Acrilicas con Tips, esmaltado Semipermanente
                       </option>
-                      <option value="8">
+                      <option value={servicio}>
                         Uñas Acrilicas, Esculpidas, esmaltado Semipermanente
                       </option>
-                      <option value="9">
+                      <option value={servicio}>
                         Uñas Acrilicas con Tips, Incrustaciones
                       </option>
-                      <option value="10">
+                      <option value={servicio}>
                         Uñas Acrilicas, Esculpidas,Incrustaciones
                       </option>
-                      <option value="11">
+                      <option value={servicio}>
                         Uñas Acrilicas con Tips, BabyBomer | Ombre|{" "}
                       </option>
-                      <option value="12">
+                      <option value={servicio}>
                         Uñas Acrilicas, Esculpidas, BabyBoomeres | Ombre
                       </option>
-                      <option value="13">Uñas de Gel Esculpidas</option>
-                      <option value="14">Uñas PoliGel | TecniGel</option>
-                      <option value="15">
+                      <option value={servicio}>Uñas de Gel Esculpidas</option>
+                      <option value={servicio}>Uñas PoliGel | TecniGel</option>
+                      <option value={servicio}>
                         Mantenimiento de Uñas Acrilicas
                       </option>
-                      <option value="16">Pedicure Tradicional</option>
-                      <option value="17">Pedicure Semipermanente</option>
-                      <option value="18">Otro</option>
+                      <option value={servicio}>Pedicure Tradicional</option>
+                      <option value={servicio}>Pedicure Semipermanente</option>
+                      <option value={servicio}>Otro</option>
                     </select>
                   </Card>
                 </Col>
@@ -101,16 +152,24 @@ export const AgendarCita = () => {
                       style={{ width: "13rem", padding: "20px" }}
                       src="https://res.cloudinary.com/danimel/image/upload/v1633924935/For_perfect_eyebrows_you_need_onions___-_Nature_And_Society_Magazine_lzjdfl.png"
                     />
-                    <select className="m-2" name="OS">
-                      <option value="1">Servicio de Cejas</option>
-                      <option value="2">Depilación con Cera</option>
-                      <option value="3">Depilación con Hilo</option>
-                      <option value="4">Depilación con Cuchilla</option>
-                      <option value="5">Pigmentación o Semipermanente</option>
-                      <option value="6">Nanoblading</option>
-                      <option value="7">Microblading </option>
-                      <option value="8">Shading o Micropigmentación</option>
-                      <option value="9">Otro</option>
+                    <select
+                      className="m-2"
+                      name="OS"
+                      onChange={handleInputChange}
+                    >
+                      <option value={servicio}>Servicio de Cejas</option>
+                      <option value={servicio}>Depilación con Cera</option>
+                      <option value={servicio}>Depilación con Hilo</option>
+                      <option value={servicio}>Depilación con Cuchilla</option>
+                      <option value={servicio}>
+                        Pigmentación o Semipermanente
+                      </option>
+                      <option value={servicio}>Nanoblading</option>
+                      <option value={servicio}>Microblading </option>
+                      <option value={servicio}>
+                        Shading o Micropigmentación
+                      </option>
+                      <option value={servicio}>Otro</option>
                     </select>
                   </Card>
                 </Col>
@@ -126,13 +185,17 @@ export const AgendarCita = () => {
                       style={{ width: "13rem", padding: "20px" }}
                       src="https://res.cloudinary.com/danimel/image/upload/v1633924165/Extensiones_de_Pesta%C3%B1as_XD_Blink_kwnolo.jpg"
                     />
-                    <select className="m-2" name="OS">
-                      <option value="1">Servicio de Pestaña</option>
-                      <option value="2">Pestañas Pelo a Pelo</option>
-                      <option value="3">Pestañas Punto a Punto </option>
-                      <option value="4">Lifting de pestañas</option>
-                      <option value="5">Pestañas Magneticas</option>
-                      <option value="6">Otro</option>
+                    <select
+                      className="m-2"
+                      name="OS"
+                      onChange={handleInputChange}
+                    >
+                      <option value={servicio}>Servicio de Pestaña</option>
+                      <option value={servicio}>Pestañas Pelo a Pelo</option>
+                      <option value={servicio}>Pestañas Punto a Punto </option>
+                      <option value={servicio}>Lifting de pestañas</option>
+                      <option value={servicio}>Pestañas Magneticas</option>
+                      <option value={servicio}>Otro</option>
                     </select>
                   </Card>
                 </Col>
@@ -144,11 +207,11 @@ export const AgendarCita = () => {
                 </label>
                 <div className="form-group">
                   <textarea
-                    name="sintomas"
+                    name="observacion"
                     className="form-control"
                     autoComplete="off"
-                    //  value={sintomas}
-                    // onChange={handleInputChange}
+                    value={observacion}
+                    onChange={handleInputChange}
                   ></textarea>
                 </div>
               </div>
@@ -159,12 +222,12 @@ export const AgendarCita = () => {
                 <div className="mb-4 mb-lg-0">
                   <input
                     type="text"
-                    name="nombre"
+                    name="cliente"
                     className="form-control"
                     placeholder="Tu nombre"
                     autoComplete="off"
-                    // value={nombre}
-                    // onChange={handleInputChange}
+                    value={cliente}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -179,8 +242,8 @@ export const AgendarCita = () => {
                     name="fecha"
                     className="form-control"
                     autoComplete="off"
-                    // value={fecha}
-                    // onChange={handleInputChange}
+                    value={fecha}
+                    onChange={handleInputChange}
                   />
                 </div>
 
@@ -193,8 +256,8 @@ export const AgendarCita = () => {
                     name="hora"
                     className="form-control"
                     autoComplete="off"
-                    // value={hora}
-                    // onChange={handleInputChange}
+                    value={hora}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -202,7 +265,9 @@ export const AgendarCita = () => {
             <hr style={{ border: "2px solid violet" }} />
 
             <div>
-            <h3>Datos del profesional que desee que le realice el servicio </h3>
+              <h3>
+                Datos del profesional que desee que le realice el servicio{" "}
+              </h3>
               <Row>
                 <Col>
                   <Card

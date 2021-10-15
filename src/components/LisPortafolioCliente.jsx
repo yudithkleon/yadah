@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import ReactImageMagnify from "react-image-magnify";
-import { AgendarCita } from "./AgendarCita";
+import { Link } from "react-router-dom";
 
 const LisPortafolioCliente = () => {
 
@@ -51,20 +51,21 @@ const LisPortafolioCliente = () => {
                   <br />
                   <h7 className="text-secondary ">Pasar el cursor sobre la imagen para ver detalles de foto </h7>
                  </td>
-                 <td><button  style={{
-                  alignContent: "center",
-                  width: "150px",
-                  height: "80px",
-                  marginTop: "50px",
-                  marginLeft: "30px",
-                  background: "violet",
-                  color: "black",
-                  border: "1px solid black",
-                  borderRadius: "25px",
-                }} 
-                 onClick=
-                 {<AgendarCita/>}>Agendar Servicio
-                 </button>
+                 <td><Link to="/agendar">
+                     <button  style={{
+                      alignContent: "center",
+                      width: "150px",
+                      height: "80px",
+                      marginTop: "50px",
+                      marginLeft: "30px",
+                      background: "violet",
+                      color: "black",
+                      border: "1px solid black",
+                      borderRadius: "25px",
+                                     }}
+                     >Agendar Servicio
+                     </button>
+                 </Link>
                 <br/> <br />
                    </td>
                

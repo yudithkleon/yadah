@@ -62,11 +62,14 @@ export const NavBar = () => {
                   style={{ color: "violet", fontSize: "14px", margin: "3px" }}
                   eventKey="link-2"
                 >
-                  <img
-                    style={{ width: "40px", margin: "3px" }}
-                    src="https://res.cloudinary.com/danimel/image/upload/v1633826300/grupos_wpther.png"
-                  />
-                  Profesionales
+
+                  <Link style={{ color: "violet", fontSize: "14px", margin: "3px" }} to="/personal">
+                    <img
+                      style={{ width: "40px", margin: "3px" }}
+                      src="https://res.cloudinary.com/danimel/image/upload/v1633826300/grupos_wpther.png"
+                    />
+                    Profesionales
+                  </Link>
                 </Nav.Link>
               </Nav.Item>
 
@@ -114,6 +117,20 @@ export const NavBar = () => {
                       src="https://res.cloudinary.com/danimel/image/upload/v1633825804/perfil_na6vdw.png"
                     />
                     Perfil
+                  </Link>
+                </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                <Nav.Link
+                  style={{ color: "violet", fontSize: "14px", margin: "3px" }}
+                  eventKey="link-1"
+                >
+                  <Link to="/registro" style={{ color: "violet", margin: "3px" }}>
+                    <img
+                      style={{ width: "40px" }}
+                      src="https://res.cloudinary.com/danimel/image/upload/v1633825804/perfil_na6vdw.png"
+                    />
+                    Registrar Usuario
                   </Link>
                 </Nav.Link>
                 </Nav.Item>

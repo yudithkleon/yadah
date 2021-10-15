@@ -16,7 +16,6 @@ import { db } from "../firebase/firebaseConfig";
 export const eliminarAsincrono = (email) => {
   return async (dispatch) => {
     const coleccion = collection(db, "portafolioCollection");
-
     const q = query(coleccion, where("emailProf", "==", email));
     const resultado = await getDocs(q);
     resultado.forEach((elemento) => {

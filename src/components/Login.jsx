@@ -27,6 +27,9 @@ function Login() {
         dispatch(loginGoogle())
     }
 
+    const handleFacebook=()=>{
+      dispatch(loginGoogle())
+  }
     return (
         <Container style={{width:'750'}} >
             <h1 style={{marginTop: '40px', textAlign: 'center'}} >Iniciar Sesión</h1>
@@ -98,8 +101,24 @@ function Login() {
                           color: "black",
                           border: "1px solid black",
                           borderRadius: "25px",
-                        }}     className="google-btn"
-                        onClick={handleGoogle}
+                        }}     className="registrar-btn"
+                        onClick={handleFacebook}
+                      >
+                     <img className="google-icon" style={{width:'2em'}} src="https://res.cloudinary.com/danimel/image/upload/v1634270646/facebook_yxdcpj.png" alt="google button" />
+                      </Button>
+                  </div>
+                  <div>
+                      <Button
+                        style={{
+                          alignContent: "center",
+                          width: "350px",
+                          height: "80px",
+                          margin: "10px",
+                          background: "violet",
+                          color: "black",
+                          border: "1px solid black",
+                          borderRadius: "25px",
+                        }}    
                       >
                        <Link style={{color: "black"}}  to="/registro"> <h4>Registrarse</h4></Link>
                       </Button>

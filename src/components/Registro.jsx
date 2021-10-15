@@ -1,23 +1,35 @@
 import { Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { fileUpload } from "../helpers/FileUpload";
-import { swal } from "sweetalert";
 import { useForm } from "../hooks/useFrom";
 import {
   registerAsincronico,
-  registerEmailPasswordNombre,
 } from "../actions/actionRegister";
-import { useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
+import swal from "sweetalert"
 
 export const Registro = () => {
+
   const dispatch = useDispatch();
 
-  const MostrarAlert = () => {
-    return swal({
-      icon: "success",
-      title: "Usuario Registrado",
-    });
-  };
+  const MostrarAlert=()=>{
+    return(
+        swal({
+            icon: "success",
+            text: "foto Agregada",
+ })
+    )
+}
+
+const MostrarAlert1=()=>{
+  return(
+      swal({
+          icon: "success",
+          text: " Usuario Registrado",
+           
+        })
+  )
+}
 
   const [values, handleInputChange] = useForm({
     nombre: "",
@@ -49,6 +61,7 @@ export const Registro = () => {
   const handlePictureClick = () => {
     document.querySelector("#fileSelector").click();
   };
+
   const handleFileChanged = (e) => {
     const file = e.target.files[0];
     fileUpload(file)
@@ -118,13 +131,11 @@ export const Registro = () => {
             <Form.Label>
               Tipo de Usuario: Cliente | Administrador | Profesional
             </Form.Label>
-
             <Form.Control
               type="tipo"
-              name="tipousuario"
+              name="tipoUsuario"
               value={tipoUsuario}
-              placeholder={tipoUsuario}
-              onChange={handleInputChange}
+                       onChange={handleInputChange}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicRepeatPassword">
@@ -150,7 +161,7 @@ export const Registro = () => {
                 }}
                 type="button"
                 className="btn btn-success m-2"
-                onClick={handlePictureClick}
+                onClick={()=>{handlePictureClick(); MostrarAlert();}}
               >
                 <h5>Cargar Foto </h5>
               </button>
@@ -171,6 +182,7 @@ export const Registro = () => {
                   borderRadius: "25px",
                 }}
                 type="submit"
+                onClick={MostrarAlert1}
               >
                 <h3>Guardar</h3>
               </Button>

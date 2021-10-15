@@ -3,11 +3,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "@firebas
 import {
   addDoc,
   collection,
-  getDocs,
-  query,
-  where,
-  deleteDoc,
-  doc,
+  getDocs  
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
@@ -58,22 +54,5 @@ export const registerAsincronico = (email, password, password2, name, ape, tipoU
          };
   };
 
-export const perfilAsincronico =()=>{
-  return async(dispatch)=>{
-    const querySnapshot = await getDocs(collection(db, "usuarioCollection" ))
-    const perfil=[]
-    querySnapshot.forEach((doc)=>{
-      perfil.push({
-        ...doc.data()
-      })
-    })
-    dispatch(perfilSincronico(perfil))
-  }
-}
 
-export const perfilSincronico=(perfil)=>{
-  return{
-    type: types.perfil,
-    payload: perfil
-  }
-}
+

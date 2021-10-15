@@ -4,7 +4,6 @@ import {
   Switch
   } from "react-router-dom";
 import Login from "../components/Login";
-import { Registro } from "../components/Registro";
 import { DashBoardRouters } from "./DashBoardRouters";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRouter } from "./PublicRouter";
@@ -52,7 +51,7 @@ if (checking){
           isAuthenticated={isLoggedIn}/>
 
 
-                   <PrivateRoute 
+          <PrivateRoute 
           path="/"
           component={DashBoardRouters}
           isAuthenticated={isLoggedIn}/>

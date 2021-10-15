@@ -7,13 +7,13 @@ import {
   } from "react-router-dom";
 import { AgendarCita } from '../components/AgendarCita';
 import { Footer } from '../components/Footer';
+import ListarPersonal from '../components/ListarPersonal';
 import { NavBar } from '../components/NavBar';
 import Perfil from '../components/Perfil';
 import { Portafolio } from '../components/Portafolio';
 import Principal from '../components/Principal';
-import {Registro} from '../components/Registro';
 import Servicios from '../components/Servicios';
-
+import {Registro} from '../components/Registro'
 
 
 export const DashBoardRouters = () => {
@@ -24,10 +24,12 @@ export const DashBoardRouters = () => {
             <Switch>
                 <Route exact path="/portafolio" component={Portafolio}/>
                 <Route exact path="/principal" component={Principal}/>
-                <Route path="/agendar" component={AgendarCita}/>
-                <Route path="/registro" component={Registro}/>
-                <Route path="/perfil" component={Perfil}/>
-                <Route path="/servicios" component={Servicios}/>
+                <Route exact path="/agendar" component={AgendarCita}/>
+                <Route exact path="/registro" component={Registro}/>
+                <Route exact  path="/perfil" component={Perfil}/>
+                <Route exact path="/servicios" component={Servicios}/>
+                <Route exact path="/personal" component={ListarPersonal}/>
+                
                 <Redirect  to="/principal" />
    
             </Switch>

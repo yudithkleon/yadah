@@ -66,7 +66,7 @@ const MostrarAlert=()=>{
                   <h1 className="size-5">COP ${porta.precio}</h1>
                   <br />
                   <h7 className="text-secondary ">Pasar el cursor sobre la imagen para ver detalles de foto </h7>
-                 </td>
+         9        </td>
                  <td><button style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }}
                  onClick={()=>
                  {MostrarAlert();

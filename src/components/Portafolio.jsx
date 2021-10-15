@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { logout } from "../actions/actionLogin";
+
 import { useForm } from "../hooks/useFrom";
 import { fileUpload } from "../helpers/FileUpload";
 import {
@@ -9,25 +9,30 @@ import {
 } from "../actions/actionsPortafolio";
 import { ListarPortafolio } from "./ListarPortafolio";
 import { swal } from "sweetalert";
-import {Container} from 'react-bootstrap';
+import {Container, Row, Col} from "react-bootstrap";
 
-
-
-
-export const Portafolio = ({ history }) => {
-
+export const Portafolio = () => {
+ 
   const dispatch = useDispatch();
 
-  const MostrarAlert=()=>{
+const MostrarAlert=()=>{
     return(
         swal({
             icon: "success",
-            title: "En Construccion..."
-            ,
-          })
+            text: "foto Agregada",
+ })
     )
 }
 
+const MostrarAlert1=()=>{
+  return(
+      swal({
+          icon: "success",
+          text: " Usuario Registrado",
+           
+        })
+  )
+}
 
   const [values, handleInputChange] = useForm({
     nomProfesional: " ",
@@ -60,10 +65,7 @@ export const Portafolio = ({ history }) => {
     );
   };
 
-  const handleLogout = () => {
-    dispatch(logout());
-    history.replace("/login");
-  };
+  
 
   const handlePictureClick = () => {
     document.querySelector("#fileSelector").click();
@@ -83,12 +85,11 @@ export const Portafolio = ({ history }) => {
     dispatch(ListarAsincronico());
   }, []);
 
-
   return (
-    <Container style={{alignContent:'center'}}>
-      <div style={{alignContent:'center'}}>
-            <form onSubmit={handleRegistro}>
-          <h1 style={{textAlign:'center'}}>Crear su Portafolio</h1>
+    <Container style={{ alignContent: "center" }}>
+      <div style={{ alignContent: "center" }}>
+        <form onSubmit={handleRegistro}>
+          <h1 style={{ textAlign: "center" }}>Crear su Portafolio</h1>
           <hr style={{ border: "2px solid violet" }} />
 
           <div className="form-group">
@@ -150,7 +151,11 @@ export const Portafolio = ({ history }) => {
               />
             </div>
             <br />
-            <div className="form-group col-md-4">
+            
+              <Row>
+            
+                <Col>
+                <div className="form-group col-md-4">
               <input
                 id="fileSelector"
                 type="file"
@@ -160,30 +165,43 @@ export const Portafolio = ({ history }) => {
                 style={{ display: "none" }}
               />
               <button
+                style={{
+                  width: "350px",
+                  margin: "20px",
+                  height: "80px",
+                  background: "violet",
+                  color: "black",
+                  borderRadius: "25px",
+                }}
                 type="button"
-                className="btn btn-success m-2"
-                onClick={handlePictureClick}
+                onClick={()=>{handlePictureClick();} }
               >
-                Cargar Imagen
+                <h4>Cargar Imagen</h4>
               </button>
-            </div>
-            <div>
-              <button  className="btn btn-primary m-3">
-                Guardar
-              </button>
-            </div>
-          </div>
-        </form>
-        <div>
-          <button
-            type="button"
-            className="btn btn-primary m-3 "
-            onClick={handleLogout}
-      
-          >
-            Logout
-          </button>
-        </div>
+              </div>
+                </Col>
+                        <Col>
+                        <button
+                    style={{
+                      width: "350px",
+                      height: "80px",
+                      margin: "20px",
+                      background: "violet",
+                      color: "black",
+                      borderRadius: "25px",
+                        }} 
+                        type="submit" 
+                  
+                  >
+                    <h4> Guardar</h4>
+                  </button>
+                          </Col>
+                   
+            </Row>
+         
+        </div>  
+      </form> 
+            
         <ListarPortafolio />
       </div>
     </Container>
