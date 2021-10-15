@@ -130,7 +130,7 @@ export const NavBar = () => {
                       style={{ width: "40px" }}
                       src="https://res.cloudinary.com/danimel/image/upload/v1633825804/perfil_na6vdw.png"
                     />
-                    Registrar Usuario
+                    Registrar
                   </Link>
                 </Nav.Link>
                 </Nav.Item>

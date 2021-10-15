@@ -1,6 +1,8 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 const ListarPersonal = () => {
 
@@ -29,9 +31,11 @@ const ListarPersonal = () => {
                   <h2>Horarios Disponibles: {perf.horarios} </h2>
                   <h2>Descansas los días: {perf.horarios}</h2>
                   <h2>Sitios donde labora Local | Domicilio: {perf.sitio}</h2>
-                  <button style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }}
-                >Ver Portafolio
-                 </button>
+                  <Link to="/LisPortafolioCliente">
+                    <button style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }}
+                                    >Ver Portafolio
+                                     </button>
+                  </Link>
                  </td>
                                 
               </tr>

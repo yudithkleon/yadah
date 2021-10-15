@@ -14,6 +14,8 @@ import { Portafolio } from '../components/Portafolio';
 import Principal from '../components/Principal';
 import Servicios from '../components/Servicios';
 import {Registro} from '../components/Registro'
+import { ListarPortafolio } from '../components/ListarPortafolio';
+import LisPortafolioCliente from '../components/LisPortafolioCliente';
 
 
 export const DashBoardRouters = () => {
@@ -29,7 +31,8 @@ export const DashBoardRouters = () => {
                 <Route exact  path="/perfil" component={Perfil}/>
                 <Route exact path="/servicios" component={Servicios}/>
                 <Route exact path="/personal" component={ListarPersonal}/>
-                
+                <Route exact path="/listarPortafolio" component={ListarPortafolio} />
+                <Route exact path="/LisPortafolioCliente" component={LisPortafolioCliente}/>
                 <Redirect  to="/principal" />
    
             </Switch>
