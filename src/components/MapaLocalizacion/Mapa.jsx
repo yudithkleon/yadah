@@ -8,6 +8,7 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import venues from "../../assets/data.json"
 import "../../style/mapa.css";
 import MarkerPopup from "./MarkerPopup";
+import pintarIcon  from "./LocalizacionIcon";
 
 export const Mapa = (props) => {
   // const [state, setState] = useState({
@@ -54,7 +55,7 @@ export const Mapa = (props) => {
           />
           {/* <Markers venues={state.data.venues} /> */}
          
-          <Marker position={[data.venues[0].geometry[0], data.venues[0].geometry[1]]}>  
+          <Marker position={[data.venues[0].geometry[0], data.venues[0].geometry[1]]} icon={pintarIcon}>  
           <MarkerPopup name={data.venues[0].description}/> 
           </Marker>
           </MapContainer>

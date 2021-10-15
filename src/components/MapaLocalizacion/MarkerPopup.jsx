@@ -8,4 +8,5 @@ const MarkerPopup = (props) => {
     </Popup>
   );
 };
+
 export default MarkerPopup;
