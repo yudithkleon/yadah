@@ -3,7 +3,9 @@ import { typesPerfil } from "../types/types";
 const initialState = {
   perfil: [],
 };
+
 export const perfilReducers = (state = initialState, action) => {
+
   switch (action.type) {
     case typesPerfil.registro:
       return {
@@ -14,6 +16,7 @@ export const perfilReducers = (state = initialState, action) => {
      return{
          perfil:[...action.payload]
      }
+     
      case typesPerfil.eliminar:
          return{
              perfil: state.perfil.filter(perf => perf.email !== action.payload)

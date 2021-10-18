@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import data from "../../assets/data.json";
-import Markers from "./MarcarMapa";
-import { useLocation, useHistory } from "react-router-dom";
+// import Markers from "./MarcarMapa";
+// import { useLocation, useHistory } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import { Container } from "react-bootstrap";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import venues from "../../assets/data.json"
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "../../style/mapa.css";
 import MarkerPopup from "./MarkerPopup";
 import pintarIcon  from "./LocalizacionIcon";
+// import {pintar} from "./LocalizacionIcon"
 
 export const Mapa = (props) => {
   // const [state, setState] = useState({
@@ -43,12 +43,13 @@ export const Mapa = (props) => {
   //     });
   //   }
   // }, []);
-  console.log(data.venues[0].geometry);
+
   return (
     <div>
       <Container>
         {/* <MapContainer center={state.currentLocation} zoom={state.zoom}> */}
-          <MapContainer center={{lat: 4.6391857, lng:-74.1838036}} zoom={15}>
+
+          <MapContainer center={{lat: 4.6188864, lng:-74.1354241}} zoom={17}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -56,8 +57,9 @@ export const Mapa = (props) => {
           {/* <Markers venues={state.data.venues} /> */}
          
           <Marker position={[data.venues[0].geometry[0], data.venues[0].geometry[1]]} icon={pintarIcon}>  
-          <MarkerPopup name={data.venues[0].description}/> 
+          <MarkerPopup name={data.venues[0].description} /> 
           </Marker>
+          {/* <Marker position={[data.venues[0].geometry[0], data.venues[0].geometry[1]]} icon={pintar}/>   */}
           </MapContainer>
       </Container>
     </div>

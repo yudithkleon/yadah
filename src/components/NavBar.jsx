@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { logout } from "../actions/actionLogin";
 
-
 export const NavBar = () => {
   const dispatch = useDispatch();
+  
   const history = useHistory();
 
   const handleLogout = () => {

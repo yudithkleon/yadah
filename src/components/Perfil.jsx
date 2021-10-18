@@ -5,11 +5,12 @@ import { useForm } from "../hooks/useFrom";
 import { fileUpload } from "../helpers/FileUpload";
 import { Container, Row, Col, Form, FormLabel } from "react-bootstrap";
 import { crearPerfilAsincronico, ListarAsincronico } from "../actions/actionPerfil";
-
+import ListarPersonal  from "../components/ListarPersonal"
 
 
 const Perfil = () => {
-//  const {perfil} =  useSelector((store) => store.perfil)
+  
+ const {perfil} =  useSelector((store) => store.perfil)
 
 const dispatch = useDispatch();
 
@@ -121,7 +122,7 @@ useEffect(() => {
                 className="btn btn-success m-2"
                  onClick={handlePictureClick}
               >
-                <h5>Editar</h5>
+                <h5>Editar Foto</h5>
               </button>
             </Col>
             <Col>
@@ -148,13 +149,13 @@ useEffect(() => {
                     value={sexo}
                     onChange={handleInputChange}
                   />
-                   <Form.Label>Tipo de Usuario</Form.Label>
+                   {/* <Form.Label>Tipo de Usuario</Form.Label>
                   <Form.Control
                     type="text"
                     name="tipoU"
                     value={tipoU}
                     onChange={handleInputChange}
-                  />
+                  /> */}
                    <Form.Label>Telefono</Form.Label>
                   <Form.Control
                     type="text"
@@ -177,23 +178,6 @@ useEffect(() => {
                     onChange={handleInputChange}
                   />
                 </Form.Group>
-                <button
-                style={{
-                  alignContent: "center",
-                  width: "190px",
-                  height: "60px",
-                  margin: "10px",
-                  background: "violet",
-                  color: "black",
-                  border: "1px solid black",
-                  borderRadius: "25px",
-                }}
-                type="button"
-                className="btn btn-success m-2"
-                // onClick={handlePictureClick}
-              >
-                <h5>Editar</h5>
-              </button>
               </Form>
             </Col>
           </Row>
@@ -202,6 +186,7 @@ useEffect(() => {
                    <hr style={{ border: "2px solid violet" }} />
                    <Form.Group className="mb-3" controlId="formBasicNombre">
                   <Form.Label>Tipo de Porfesional: Estilista Integral | Manicurista | Cejas | Pestañas</Form.Label>
+  
                   <Form.Control
                     type="text"
                     name="profesion"
@@ -231,7 +216,7 @@ useEffect(() => {
                   />
                    <Form.Label>Horarios Diponibles: Ejemplo 6:am a 10: pm</Form.Label>
                   <Form.Control
-                    type="horario"
+                    type="text"
                     name="horarios"
                     value={horarios}
                     onChange={handleInputChange}
@@ -275,7 +260,7 @@ useEffect(() => {
               </Container>
         </Container>
         </div>
-
+ <ListarPersonal/>
       </form>
   );
 };

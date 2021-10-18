@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect} from "react";
 import {
   BrowserRouter as Router,
   Switch
@@ -10,6 +10,7 @@ import { PublicRouter } from "./PublicRouter";
 import { useDispatch } from "react-redux"
 import { getAuth, onAuthStateChanged} from "@firebase/auth"
 import { loginEmailPassword } from "../actions/actionLogin"
+import { Registro } from "../components/Registro";
 
 export default function AppRouter() {
 
@@ -43,13 +44,17 @@ if (checking){
   return (
     <Router>
         <Switch>
-
           <PublicRouter 
           
           path="/login"
           component={Login}
           isAuthenticated={isLoggedIn}/>
 
+      <PublicRouter 
+          
+          path="/registro"
+          component={Registro}
+          isAuthenticated={isLoggedIn}/>
 
           <PrivateRoute 
           path="/"

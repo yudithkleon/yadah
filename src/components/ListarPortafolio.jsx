@@ -1,21 +1,23 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { eliminarAsincrono } from "../actions/actionsPortafolio";
+import { eliminarAsincrono} from "../actions/actionsPortafolio";
 import ReactImageMagnify from "react-image-magnify";
 import swal from "sweetalert";
 
-export const ListarPortafolio = () => {
-  const { portafolio } = useSelector((store) => store.portafolio);
 
+export const ListarPortafolio = () => {
+
+  const { portafolio } = useSelector((store) => store.portafolio);
+ 
   const dispatch = useDispatch();
+
 
 const MostrarAlert1=()=>{
     return(
         swal({
             icon: "success",
-            title: "En Construccion..."
-            ,
+            title: "En Construcción...",
           })
     )
 }
@@ -27,6 +29,8 @@ const MostrarAlert=()=>{
           })
     )
 }
+
+
 
   return (
     <div>
@@ -66,18 +70,16 @@ const MostrarAlert=()=>{
                   <h1 className="size-5">COP ${porta.precio}</h1>
                   <br />
                   <h7 className="text-secondary ">Pasar el cursor sobre la imagen para ver detalles de foto </h7>
-         9        </td>
+                </td>
                  <td><button style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }}
                  onClick={()=>
                  {MostrarAlert();
                 dispatch(eliminarAsincrono(porta.emailProf));
                     
                  } }>Eliminar
-             
-
-                 </button>
+                  </button>
                 <br/> <br />
-                   <button  style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }} onClick={MostrarAlert1}>Editar</button></td>
+                   <button  style={{width: "250px", height: "60px", background:'violet', color: 'black', borderRadius:'25px' }}  onClick={MostrarAlert1} >Editar</button></td>
                 
               </tr>
             ))

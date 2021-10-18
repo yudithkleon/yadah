@@ -8,8 +8,9 @@ export const types={
 export const typesPortafolio={
     registro:'registro',
     listar:'listar',
-    eliminar:'eliminar'
-  
+    eliminar:'eliminar',
+    
+ 
 }
 
 export const typesPerfil={

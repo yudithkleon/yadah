@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import {useDispatch} from 'react-redux'
-import {loginGoogle,  loginEmailPassword} from '../actions/actionLogin'
+import {loginGoogle,  loginEmailPassword, loginFacebook} from '../actions/actionLogin'
 import {useForm} from '../hooks/useFrom'
+import {Link} from 'react-router-dom'
 
 
 function Login() {
@@ -28,7 +28,7 @@ function Login() {
     }
 
     const handleFacebook=()=>{
-      dispatch(loginGoogle())
+      dispatch(loginFacebook())
   }
     return (
         <Container style={{width:'750'}} >
@@ -104,24 +104,28 @@ function Login() {
                         }}     className="registrar-btn"
                         onClick={handleFacebook}
                       >
-                     <img className="google-icon" style={{width:'2em'}} src="https://res.cloudinary.com/danimel/image/upload/v1634270646/facebook_yxdcpj.png" alt="google button" />
+                     <img className="facebook-icon" style={{width:'2em'}} src="https://res.cloudinary.com/danimel/image/upload/v1634270646/facebook_yxdcpj.png" alt="facebook button" />
                       </Button>
                   </div>
                   <div>
-                      <Button
-                        style={{
-                          alignContent: "center",
-                          width: "350px",
-                          height: "80px",
-                          margin: "10px",
-                          background: "violet",
-                          color: "black",
-                          border: "1px solid black",
-                          borderRadius: "25px",
-                        }}    
-                      >
-                       <Link style={{color: "black"}}  to="/registro"> <h4>Registrarse</h4></Link>
-                      </Button>
+             
+                      <Link to="/registro">
+                        <Button
+                          style={{
+                            alignContent: "center",
+                            width: "350px",
+                            height: "80px",
+                            margin: "10px",
+                            background: "violet",
+                            color: "black",
+                            border: "1px solid black",
+                            borderRadius: "25px",
+                          }}
+                        >
+                        Registrarse
+                        </Button>
+                      </Link>
+                  
                   </div>
           
                    

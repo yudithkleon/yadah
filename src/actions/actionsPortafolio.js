@@ -5,10 +5,11 @@ import {
   getDocs,
   query,
   where,
-  deleteDoc,
+   deleteDoc,
   doc,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+
 
 
 
@@ -22,6 +23,7 @@ export const eliminarAsincrono = (email) => {
       deleteDoc(doc(db, "portafolioCollection", elemento.id));
     });
     dispatch(eliminarSincrono(email));
+    
   };
 };
 
@@ -32,18 +34,15 @@ export const eliminarSincrono = (email) => {
   };
 };
 
-
-
-
 //Listar//////////////////////////////////////////////////////////////////////
 export const ListarAsincronico = () => {
   return async (dispatch) => {
     const datos = await getDocs(collection(db, "portafolioCollection"));
-    const estude = [];
+    const porta = [];
     datos.forEach((documento) => {
-      estude.push({ ...documento.data() });
+      porta.push({ ...documento.data() });
     });
-    dispatch(ListarSincrono(estude));
+    dispatch(ListarSincrono(porta));
   };
 };
 
@@ -53,8 +52,6 @@ export const ListarSincrono = (portafolio) => {
     payload: portafolio,
   };
 };
-
-
 
 //Portafolio Agregar///////////////////////////////////////////////////////////////////
 

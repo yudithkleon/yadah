@@ -1,6 +1,6 @@
 import { types } from "../types/types";
 import { getAuth, signInWithPopup, signInWithEmailAndPassword, signOut } from "@firebase/auth";
-import { google } from "../firebase/firebaseConfig";
+import { facebook, google } from "../firebase/firebaseConfig";
 
 //sINoUUT PARA QUE CIERRE LA SECCION
 export const logout = () => {
@@ -51,6 +51,20 @@ export const loginGoogle = ()=>{
         })
     }
 }
+
+export const loginFacebook = ()=>{
+    return(dispatch)=>{
+        const auth= getAuth();
+        signInWithPopup(auth, facebook)
+        .then (({user})=>{
+            dispatch(loginSincrono(user.uid, user.displayName))
+        })
+        .catch(e=>{
+            console.log(e)
+        })
+    }
+}
+
 
 export const loginSincrono = (id, displayname)=>{
 

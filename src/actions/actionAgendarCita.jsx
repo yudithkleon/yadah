@@ -7,9 +7,12 @@ import {
     where,
     deleteDoc,
     doc,
+    setDoc,
   } from "firebase/firestore";
   import { db } from "../firebase/firebaseConfig";
 
+
+//elimar o cancelar cita
   export const eliminarAsincrono = (email) => {
     return async (dispatch) => {
       const coleccion = collection(db, "agendarCollection");
@@ -29,7 +32,7 @@ import {
     };
   };
 
-
+//listar las citas
 
   export const ListarAsincronico = () => {
     return async (dispatch) => {
@@ -42,40 +45,22 @@ import {
     };
   };
   
-  export const ListarSincrono = (agendarcita) => {
+  export const ListarSincrono = (cita) => {
     return {
       type: typesAgendar.listar,
-      payload: agendarcita,
+      payload: cita,
     };
   };
   
+// Agregar la cita a  Firebase
 
-export const AgendarAsincronico=(
-    lugar,
-    direc, 
-    servicio,
-    observacion,
-    cliente,
-    email,
-    fecha,
-    hora,
-    profesional
-)=>{
-return (dispatch)=>{
-    const agendarcita={
-        lugar,
-    direc, 
-    servicio,
-    observacion,
-    cliente,
-    email,
-    fecha,
-    hora,
-    profesional
-    };
-    addDoc(collection(db, "agendarCollection"), agendarcita)
+export const AgendarAsincronico=(values)=>{
+return async (dispatch)=>{
+
+     await addDoc(collection(db, "agendarCollection"), values)
       .then((resp) => {
-        dispatch(AgendarSincronico(agendarcita));
+        dispatch(AgendarSincronico(resp));
+        console.log(resp)
       })
       .catch((error) => {
         console.log(error);
@@ -83,10 +68,10 @@ return (dispatch)=>{
 }
 }
 
-
-  export const AgendarSincronico = (agendarcita)=>{
+  export const AgendarSincronico = (cita)=>{
       return{
           type: typesAgendar.registro,
-          payload: agendarcita,
+          payload: cita,
       }
   }  
+

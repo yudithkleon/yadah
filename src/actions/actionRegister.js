@@ -2,8 +2,7 @@ import { types } from "../types/types";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "@firebase/auth";
 import {
   addDoc,
-  collection,
-  getDocs  
+  collection
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 

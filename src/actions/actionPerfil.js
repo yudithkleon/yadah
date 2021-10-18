@@ -1,4 +1,3 @@
-import React from 'react'
 import { typesPerfil } from '../types/types'
 import {
     addDoc,
@@ -32,14 +31,13 @@ export const eliminarPerfilAsincronico=(email)=>{
       }
   }
 
-
-
+///Listar/////////////////////////////////
 export const ListarAsincronico =()=>{
     return async (dispatch)=>{
         const datos=await getDocs(collection(db, 'pefilCollection' ));
         const perf = [];
         datos.forEach((documento)=>{
-            perf.push({...documento.data})
+            perf.push(documento.data())
         })
         dispatch(ListarSincrono(perf))
     }
@@ -52,7 +50,7 @@ export const ListarSincrono=(perfil)=>{
     }
 }
 
-
+//Agregar
 export const crearPerfilAsincronico = (
     nombre,
     apellido,
@@ -97,6 +95,6 @@ export const crearPerfilAsincronico = (
 export const CrearPerfilSincronico = (perfil)=>{
     return {
         type: typesPerfil.registro,
-        payloas: perfil,
+        payload: perfil,
     }
 }

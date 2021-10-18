@@ -1,11 +1,12 @@
 {
   "venues": [
     {
-      "description": "Centro Comercial Trebolis ",
+      "description": "YADAH Agencia de Belleza- CC Plazas las Americas ",
       "name": "YADAH",
+      "imagen": "https://res.cloudinary.com/danimel/image/upload/v1633805608/yadah/logo2_jdgwii.jpg",
       "geometry": [
-          4.6391857,
-           -74.1838036
+        4.6188864,
+        -74.1354241
         ]
     },
     {

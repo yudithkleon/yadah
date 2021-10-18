@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect} from "react";
+import { useDispatch} from "react-redux";
 
 import { useForm } from "../hooks/useFrom";
 import { fileUpload } from "../helpers/FileUpload";
 import {
   PortaAsincronico,
   ListarAsincronico,
-} from "../actions/actionsPortafolio";
+ } from "../actions/actionsPortafolio";
 import { ListarPortafolio } from "./ListarPortafolio";
 import { swal } from "sweetalert";
 import {Container, Row, Col} from "react-bootstrap";
@@ -14,6 +14,7 @@ import {Container, Row, Col} from "react-bootstrap";
 export const Portafolio = () => {
  
   const dispatch = useDispatch();
+
 
 const MostrarAlert=()=>{
     return(

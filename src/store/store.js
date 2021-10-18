@@ -17,8 +17,8 @@ const reducers = combineReducers ( {
   register: registerReducer,
   portafolio: portafolioReducers,
   perfil: perfilReducers,
-  cita: agendarReducers
-
+  cita: agendarReducers,
+ 
 })
 
 export const store = createStore(
