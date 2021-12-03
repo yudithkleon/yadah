@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux';
+import AppRouter from './router/AppRouter';
+import { store } from './store/store';
+import  'react-bootstrap'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <h1>Holla</h1>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <AppRouter/>
+  </Provider>,
+   document.getElementById('root')
 );
 

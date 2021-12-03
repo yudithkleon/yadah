@@ -1,0 +1,21 @@
+{
+  "venues": [
+    {
+      "description": "YADAH Agencia de Belleza- CC Plazas las Americas ",
+      "name": "YADAH",
+      "imagen": "https://res.cloudinary.com/danimel/image/upload/v1633805608/yadah/logo2_jdgwii.jpg",
+      "geometry": [
+        4.6188864,
+        -74.1354241
+        ]
+    },
+    {
+      "description": "Angelica Pickel",
+      "name": "Angelica",
+      "geometry": [
+          4.6375862,
+          -74.1852946
+        ]
+    }
+  ]
+}
